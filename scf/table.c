@@ -74,27 +74,6 @@ bool XYZ_SCFTableHas(XYZ_SCFTable* table, const char* key) {
   return false;
 }
 
-bool XYZ_SCFTableDel(XYZ_SCFTable* table, const char* key) {
-  SDL_assert(table != NULL && "XYZ_SCFTableDel: table cannot be NULL");
-  SDL_assert(key != NULL && "XYZ_SCFTableDel: key cannot be NULL");
-  XYZ_SCFPair* cur = table->head;
-  while (cur != NULL) {
-    if (SDL_strcmp(cur->key, key) == 0) {
-      XYZ_SCFPair* prev = cur->prev;
-      XYZ_SCFPair* next = cur->next;
-
-      prev->next = next;
-      next->prev = prev;
-      XYZ_SCFPairDestroy(cur);
-      SDL_free(cur);
-      return true;
-    }
-    cur = cur->next;
-  }
-
-  return false;
-}
-
 void XYZ_SCFTableAdd(XYZ_SCFTable* table, XYZ_SCFPair* pair) {
   SDL_assert(table != NULL && "XYZ_SCFTableAdd: table cannot be NULL");
   SDL_assert(pair != NULL && "XYZ_SCFTableAdd: pair cannot be NULL");

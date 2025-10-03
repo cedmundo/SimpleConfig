@@ -1,0 +1,5 @@
+set(BUILD_SHARED_LIBS ON CACHE BOOL "Build shared libraries")
+set(WITH_EXAMPLES OFF CACHE BOOL "Build examples")
+set(UNIT_TESTING OFF CACHE BOOL "Build with unit testing")
+set(PICKY_DEVELOPER ON CACHE BOOL "Build with picky developer flags")
+add_subdirectory(cmocka)

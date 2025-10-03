@@ -8,9 +8,10 @@ project(SimpleConfig
 set(CMAKE_C_STANDARD 11)
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 set(CMAKE_BUILD_TYPE Debug)
+enable_testing()
 
 # Vendor dependencies
-# add_subdirectory(vendor)
+add_subdirectory(vendor)
 
 # Find packages
 find_package(SDL3 REQUIRED CONFIG REQUIRED COMPONENTS SDL3)
