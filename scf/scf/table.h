@@ -40,7 +40,9 @@ typedef struct XYZ_SCFTable {
 
 XYZ_SCFTable* XYZ_SCFTableCreate();
 void XYZ_SCFTableDestroy(XYZ_SCFTable* table);
-XYZ_SCFPair* XYZ_SCFPairCreate(const char* key, XYZ_SCFValue value);
+XYZ_SCFPair* XYZ_SCFPairCreate(const char* key,
+                               size_t key_len,
+                               XYZ_SCFValue value);
 void XYZ_SCFPairDestroy(XYZ_SCFPair* pair);
 bool XYZ_SCFTableHas(XYZ_SCFTable* table, const char* key);
 void XYZ_SCFTableAdd(XYZ_SCFTable* table, XYZ_SCFPair* pair);

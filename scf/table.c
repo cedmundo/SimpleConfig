@@ -24,7 +24,9 @@ void XYZ_SCFTableDestroy(XYZ_SCFTable* table) {
   }
 }
 
-XYZ_SCFPair* XYZ_SCFPairCreate(const char* key, XYZ_SCFValue value) {
+XYZ_SCFPair* XYZ_SCFPairCreate(const char* key,
+                               size_t key_len,
+                               XYZ_SCFValue value) {
   SDL_assert(key != NULL && "XYZ_SCFPairCreate: key cannot be NULL");
 
   XYZ_SCFPair* pair = SDL_malloc(sizeof(XYZ_SCFPair));
@@ -33,7 +35,6 @@ XYZ_SCFPair* XYZ_SCFPairCreate(const char* key, XYZ_SCFValue value) {
   }
   SDL_memset(pair, 0, sizeof(XYZ_SCFPair));
 
-  size_t key_len = SDL_strlen(key);
   pair->key = SDL_malloc(key_len + 1);
   if (pair->key == NULL) {
     SDL_free(pair);
@@ -103,7 +104,8 @@ bool XYZ_SCFTableSet(XYZ_SCFTable* table, const char* key, XYZ_SCFValue value) {
     cur = cur->next;
   }
 
-  XYZ_SCFPair* pair = XYZ_SCFPairCreate(key, value);
+  size_t key_len = SDL_strlen(key);
+  XYZ_SCFPair* pair = XYZ_SCFPairCreate(key, key_len, value);
   if (pair == NULL) {
     return false;
   }

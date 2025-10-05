@@ -1,5 +1,5 @@
 add_library(scf STATIC)
-target_sources(scf PRIVATE table.c lexer.c scf.c)
+target_sources(scf PRIVATE table.c lexer.c parser.c scf.c)
 target_link_libraries(scf PRIVATE SDL3::SDL3)
 target_include_directories(scf INTERFACE "${CMAKE_CURRENT_SOURCE_DIR}")
 
@@ -12,3 +12,8 @@ add_executable(lexer_test)
 target_sources(lexer_test PRIVATE lexer_test.c)
 target_link_libraries(lexer_test PRIVATE SDL3::SDL3 cmocka::cmocka scf)
 add_test(NAME lexer_test COMMAND lexer_test)
+
+add_executable(parser_test)
+target_sources(parser_test PRIVATE parser_test.c)
+target_link_libraries(parser_test PRIVATE SDL3::SDL3 cmocka::cmocka scf)
+add_test(NAME parser_test COMMAND parser_test)

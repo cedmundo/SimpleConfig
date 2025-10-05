@@ -15,14 +15,14 @@ static void table_add(void** state) {
   assert_non_null(table);
 
   XYZ_SCFValue value = {.type = XYZ_SCF_VALUE_TYPE_I32, .as_i32 = 1234};
-  XYZ_SCFPair* pair = XYZ_SCFPairCreate("key1", value);
+  XYZ_SCFPair* pair = XYZ_SCFPairCreate("key1", SDL_strlen("key1"), value);
   assert_non_null(pair);
 
   XYZ_SCFTableAdd(table, pair);
   assert_ptr_equal(table->head, pair);
   assert_ptr_equal(table->tail, pair);
 
-  pair = XYZ_SCFPairCreate("key2", value);
+  pair = XYZ_SCFPairCreate("key2", SDL_strlen("key2"), value);
   assert_non_null(pair);
 
   XYZ_SCFTableAdd(table, pair);
@@ -40,14 +40,14 @@ static void table_has(void** state) {
   assert_non_null(table);
 
   XYZ_SCFValue value = {.type = XYZ_SCF_VALUE_TYPE_I32, .as_i32 = 1234};
-  XYZ_SCFPair* pair = XYZ_SCFPairCreate("key1", value);
+  XYZ_SCFPair* pair = XYZ_SCFPairCreate("key1", SDL_strlen("key1"), value);
   assert_non_null(pair);
 
   XYZ_SCFTableAdd(table, pair);
   assert_ptr_equal(table->head, pair);
   assert_ptr_equal(table->tail, pair);
 
-  pair = XYZ_SCFPairCreate("key2", value);
+  pair = XYZ_SCFPairCreate("key2", SDL_strlen("key2"), value);
   assert_non_null(pair);
 
   XYZ_SCFTableAdd(table, pair);
@@ -75,7 +75,7 @@ static void table_get(void** state) {
   assert_non_null(table);
 
   XYZ_SCFValue value = {.type = XYZ_SCF_VALUE_TYPE_I32, .as_i32 = 1234};
-  XYZ_SCFPair* pair = XYZ_SCFPairCreate("key1", value);
+  XYZ_SCFPair* pair = XYZ_SCFPairCreate("key1", SDL_strlen("key1"), value);
   assert_non_null(pair);
 
   XYZ_SCFTableAdd(table, pair);
@@ -83,7 +83,7 @@ static void table_get(void** state) {
   assert_ptr_equal(table->tail, pair);
 
   value = (XYZ_SCFValue){.type = XYZ_SCF_VALUE_TYPE_F32, .as_f32 = 69.0f};
-  pair = XYZ_SCFPairCreate("key2", value);
+  pair = XYZ_SCFPairCreate("key2", SDL_strlen("key2"), value);
   assert_non_null(pair);
 
   XYZ_SCFTableAdd(table, pair);
@@ -112,7 +112,7 @@ static void table_set(void** state) {
   assert_non_null(table);
 
   XYZ_SCFValue value = {.type = XYZ_SCF_VALUE_TYPE_I32, .as_i32 = 1234};
-  XYZ_SCFPair* pair = XYZ_SCFPairCreate("key1", value);
+  XYZ_SCFPair* pair = XYZ_SCFPairCreate("key1", SDL_strlen("key1"), value);
   assert_non_null(pair);
 
   XYZ_SCFTableAdd(table, pair);
@@ -120,7 +120,7 @@ static void table_set(void** state) {
   assert_ptr_equal(table->tail, pair);
 
   value = (XYZ_SCFValue){.type = XYZ_SCF_VALUE_TYPE_F32, .as_f32 = 69.0f};
-  pair = XYZ_SCFPairCreate("key2", value);
+  pair = XYZ_SCFPairCreate("key2", SDL_strlen("key2"), value);
   assert_non_null(pair);
 
   XYZ_SCFTableAdd(table, pair);
